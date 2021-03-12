@@ -135,12 +135,28 @@ async function updateProduct(req, res, id){
 async function putProduct(req, res, id){
     try{
         const product = await Product.findById(id)
-
+        const body = await getPostData(req)
+        
         if(!product){
             defaultTitle = 'No name game'
             defaultDescription = 'No description game'
             defaultPlatform = 'No platform'
             defaultPrice = '60'
+
+            const { title, description, platform, price} =JSON.parse(body)
+
+            if(title){
+                defaultTitle = title
+            }
+            if(description){
+                defaultDescription = description
+            }
+            if(platform){
+                defaultPlatform = platform
+            }
+            if(price){
+                defaultPrice = price
+            }
 
             const productData = {
                 id: id,
