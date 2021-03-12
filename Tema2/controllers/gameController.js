@@ -1,10 +1,10 @@
 const { removeAllListeners } = require('nodemon')
-const Product = require('../models/productModel')
+const Product = require('../models/gameModel')
 const { getPostData } = require('../utils')
 
-//@desc Gets all Products
-//@route GET /api/products
-async function getProducts(req, res){
+//@desc Gets all games
+//@route GET /api/games
+async function getGames(req, res){
     try{
         const products = await Product.findAll()
 
@@ -15,9 +15,9 @@ async function getProducts(req, res){
     }
 }
 
-//@desc Gets product by id
-//@route GET /api/products/id
-async function getProduct(req, res, id){
+//@desc Gets game by id
+//@route GET /api/games/id
+async function getGame(req, res, id){
     try{
         const product = await Product.findById(id)
 
@@ -33,9 +33,9 @@ async function getProduct(req, res, id){
     }
 }
 
-//@desc Create a product
-//@route POST /api/products
-async function createProduct(req, res){
+//@desc Create a game
+//@route POST /api/games
+async function createGame(req, res){
     try{
         const body = await getPostData(req)
 
@@ -80,9 +80,9 @@ async function createProduct(req, res){
     }
 }
 
-//@desc Update a product
-//@route PATCH /api/products/id
-async function updateProduct(req, res, id){
+//@desc Update a game
+//@route PATCH /api/games/id
+async function updateGame(req, res, id){
     try{
         const product = await Product.findById(id)
 
@@ -130,9 +130,9 @@ async function updateProduct(req, res, id){
     }
 }
 
-//@desc Put a product
-//@route PUT /api/products/id
-async function putProduct(req, res, id){
+//@desc Put a game
+//@route PUT /api/games/id
+async function putGame(req, res, id){
     try{
         const product = await Product.findById(id)
         const body = await getPostData(req)
@@ -193,9 +193,9 @@ async function putProduct(req, res, id){
     }
 }
 
-//@desc Delete a product by id
-//@route DELETE /api/products/id
-async function deleteProduct(req, res, id){
+//@desc Delete a game by id
+//@route DELETE /api/games/id
+async function deleteGame(req, res, id){
     try{
         const product = await Product.findById(id)
 
@@ -213,10 +213,10 @@ async function deleteProduct(req, res, id){
 }
 
 module.exports = {
-    getProducts,
-    getProduct,
-    createProduct,
-    updateProduct,
-    deleteProduct,
-    putProduct
+    getGames,
+    getGame,
+    createGame,
+    updateGame,
+    deleteGame,
+    putGame
 }
