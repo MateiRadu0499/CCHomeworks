@@ -28,7 +28,7 @@ function update(id, product){
     return new Promise((resolve, reject) =>{
         const index = products.findIndex((p) => p.id === id)
         products[index] = {id, ...product}
-        writeDataToFile('./data/products.json', products)
+        writeDataToFile('./data/games.json', products)
         resolve(products[index])
     })
 }
@@ -36,7 +36,7 @@ function update(id, product){
 function remove(id){
     return new Promise((resolve, reject) =>{
         products = products.filter((p) => p.id !== id)
-        writeDataToFile('./data/products.json', products)
+        writeDataToFile('./data/games.json', products)
         resolve()
     })
 }
