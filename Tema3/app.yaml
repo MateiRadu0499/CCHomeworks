@@ -1,2 +1,1 @@
-runtime: nodejs12.18.0
-vm: true
+runtime: nodejs12

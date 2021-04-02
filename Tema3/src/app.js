@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const bodyParser = require('body-parser');
+const { gmail } = require('googleapis/build/src/apis/gmail');
 
 var events_arr=['Extracting done. Refresh for the Google events'];
 
@@ -168,10 +169,28 @@ app.post('/events', (req, res) => {
             }
         return console.log(`Busy at that time`)
         }
-    )
-
-
+    )   
     console.log(req.body)
+    
+    const sgMail = require('@sendgrid/mail')
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    const msg = {
+        to: req.body.to,
+        from: 'mateiradu71@gmail.com',
+        subject: req.body.summary,
+        text: req.body.description,
+        html: req.body.description,
+    }
+    sgMail
+        .send(msg)
+        .then(() => {
+        console.log('Email sent')
+        })
+        .catch((error) => {
+        console.error(error)
+        })
+
+    res.render('events.html')
 })
 
 app.listen(process.env.PORT, () =>{
