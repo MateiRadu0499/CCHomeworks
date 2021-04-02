@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Calendar</title>
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+  <div class="form">
+    <form action="http://localhost:5000/" method="POST">
+      <a class="button" target="_blank" rel="noopener noreferrer" href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar.readonly&response_type=code&client_id=319929193050-3d6c74mk71k5pqhkv7rldd2ch804b2rd.apps.googleusercontent.com&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&flowName=GeneralOAuthFlow">Sign In</a>
+       <span>You need to Sign In for the token</span><br><br>
+      <label for="token">Paste the copied token here</label>
+      <input name="token" type="text" placeholder="must be the token received after login...">
+      <input type="submit" value="My events"></input>
+    </form>
+    <hr>
+    <form action="http://localhost:5000/events" method="POST">
+      <label for="colab email">Colab email</label>
+      <input type="email" name="to" placeholder="send email to...">
+      <label for="event title">Event Title</label>
+      <input type="text" name="summary" placeholder="the title of the event...">
+      <label for="body">Event contents</label>
+      <input type="text" name="description" placeholder="message contents...">
+      <input type="submit" value="Send Invite">
+    </form>
+  </div>
+</body>
+</html>
